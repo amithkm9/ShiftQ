@@ -1,0 +1,19 @@
+{
+  "question": "Does joint adaptive precision/rank improve PPL under the uniform affine 4-bit/rank-16 storage ceiling?",
+  "scope": "Research prototype; not an exact reproduction or novelty claim",
+  "search_scope": "Bounded primary-source review, not a systematic or exhaustive survey",
+  "proposed_heuristic": "Greedy reduction of normalized reconstruction error times (1 - 0.5*r/(r+16)) per added byte",
+  "calibration_heuristic": "Mean squared input-channel activation weights; omits covariance",
+  "storage": "Packed weights + scales + biases + unchanged weights + FP32 LoRA parameters; file headers excluded",
+  "hardware": "Apple Silicon macOS; GPU inaccessible in this execution session",
+  "smoke": "Blocked on import mlx.core before model or dataset download",
+  "results": "No model benchmarks produced",
+  "next": "Execute FAST_MODE in VS Code with .venv kernel and working Metal; then opt into two-seed 1.7B runs",
+  "source_hashes": {
+    "mlx_lm/quant/dynamic_quant.py": "a1aebc7309cca4bbbeea345624dc06f5d3ab83dfd647e704d850b4c857def5b3",
+    "mlx_lm/tuner/lora.py": "4d3a8edab111d4ddba33398ba8700203db7b61621c39e9c348fdd50e57278b45",
+    "mlx_lm/tuner/trainer.py": "0b6027fdb11803e951ceee52c83a81f82daa922ea8c6b7ca6888953461064e8e",
+    "mlx/nn/layers/quantized.py": "8ca4574a212f14cbec4c446826474583ef0bf1e2cb1630574fd730c77af03b33"
+  },
+  "notebook_sha256": "6d61d9574eefc5037dd80e14da13debc709a5d69a37adde1dd8e2e9c951be39f"
+}
