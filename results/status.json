@@ -1,0 +1,22 @@
+{
+  "status": "1.7B two-seed study complete; no sensitivity advantage established",
+  "completed": [
+    "project files",
+    "dependency installation",
+    "nbformat and syntax validation",
+    "API source inspection",
+    "pure allocator/data unit checks",
+    "user-executed 0.6B smoke",
+    "saved adapter rank/count audit",
+    "saved data overlap audit",
+    "two-seed controls and ablations",
+    "calibration-domain comparison",
+    "all 20 adapter and training-log audits",
+    "user-executed 1.7B main study",
+    "1.7B artifact review and two-seed comparison"
+  ],
+  "next": "Finalize the report with these results, verify runtime memory separately, then predefine a validation-selected checkpoint study with more seeds and fresh held-out data. Do not tune on the current test results.",
+  "latest_run": "20261018T211742253834Z",
+  "preliminary": true,
+  "memory_measurements_need_recheck": true
+}

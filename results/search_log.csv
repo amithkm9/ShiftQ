@@ -1,0 +1,6 @@
+date,query_or_action,filter,decision
+2026-10-18,site.github.com/ml-explore/mlx-lm dynamic quantization quant_predicate LoRALinear from_base,MLX-LM and MLX primary source repositories,"included dynamic quantization, LoRA and quantizer sources"
+2026-10-18,mixed precision quantization LoRA rank joint allocation LLM QA LoRA LQ LoRA,original papers and publisher records only,"included LQ-LoRA, QR-Adaptor and AutoQRA; excluded social summaries"
+2026-10-18,site.arxiv.org HAWQ V2 mixed precision quantization Hessian trace,original paper/publisher,included HAWQ-V2; no exhaustive-search claim
+2026-10-18,direct original-paper URLs: LoRA; QLoRA; AdaLoRA; SqueezeLLM; SpQR,original arXiv records,LoRA/QLoRA/AdaLoRA retained; SqueezeLLM/SpQR background screened; unrelated 2308.09367 discarded
+2026-10-18,direct API documentation and installed source inspection,MLX 0.32.4; MLX-LM 0.32.2,verified signatures and source behavior; Metal runtime unavailable

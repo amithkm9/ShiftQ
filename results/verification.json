@@ -1,0 +1,84 @@
+{
+  "date": "2026-10-18",
+  "notebook_valid": true,
+  "code_cells": 86,
+  "max_lines": 9,
+  "all_cells_compile": true,
+  "api_checks": {
+    "mlx_lm/utils.py:load": {
+      "arguments": [
+        "path_or_hf_repo",
+        "tokenizer_config",
+        "model_config",
+        "adapter_path",
+        "lazy",
+        "return_config",
+        "revision",
+        "trust_remote_code"
+      ],
+      "sha256": "2803ff8d2298b0854797d78b16387c394801d16c57bfb30cf42ac4efbdee2873"
+    },
+    "mlx_lm/utils.py:load_tokenizer": {
+      "arguments": [
+        "model_path",
+        "tokenizer_config_extra",
+        "eos_token_ids"
+      ],
+      "sha256": "2803ff8d2298b0854797d78b16387c394801d16c57bfb30cf42ac4efbdee2873"
+    },
+    "mlx/nn/layers/quantized.py:quantize": {
+      "arguments": [
+        "model",
+        "group_size",
+        "bits",
+        "mode",
+        "quantize_input",
+        "class_predicate"
+      ],
+      "sha256": "8ca4574a212f14cbec4c446826474583ef0bf1e2cb1630574fd730c77af03b33"
+    },
+    "mlx_lm/tuner/lora.py:from_base": {
+      "arguments": [
+        "linear",
+        "r",
+        "dropout",
+        "scale"
+      ],
+      "sha256": "4d3a8edab111d4ddba33398ba8700203db7b61621c39e9c348fdd50e57278b45"
+    },
+    "mlx_lm/tuner/trainer.py:grad_checkpoint": {
+      "arguments": [
+        "layer"
+      ],
+      "sha256": "0b6027fdb11803e951ceee52c83a81f82daa922ea8c6b7ca6888953461064e8e"
+    }
+  },
+  "allocator_unit_checks": "passed: budgets, greedy termination, heterogeneous fixture, matched random/fixed costs",
+  "data_unit_checks": "passed: duplicate rows filtered; disjoint calibration/training fixture",
+  "fixture_warning": "Unit fixtures are not research measurements or model benchmarks.",
+  "smoke_status": "blocked before model loading: Metal unavailable",
+  "smoke_exit_code": 1,
+  "untested": [
+    "MLX quantize/dequantize GPU kernels",
+    "real model loading and forward pass",
+    "actual adapter shapes and base freezing",
+    "gradient updates and checkpointing",
+    "actual model storage equality",
+    "real-data end-to-end smoke and full experiments"
+  ],
+  "versions": {
+    "mlx": "0.32.4",
+    "mlx-lm": "0.32.2",
+    "nbformat": "5.11.1",
+    "datasets": "5.1.0"
+  },
+  "latest_user_run": {
+    "run_id": "20261018T211742253834Z",
+    "reviewed_on": "2026-10-20",
+    "status": "25 configurations completed; 20 trained runs audited",
+    "review_file": "20261018T211742253834Z/review.json",
+    "independently_rerun_by_agent": false,
+    "runtime_memory_caveat": "Later ablations have about 1.0203 GB more active MLX memory than earlier methods with equivalent stored tensor bytes."
+  },
+  "original_smoke_note": "smoke_status and untested describe the original agent-side attempt; later user-run evidence is recorded in latest_user_run."
+}
