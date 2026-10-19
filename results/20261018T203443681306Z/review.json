@@ -1,0 +1,35 @@
+{
+  "run_id": "20261018T203443681306Z",
+  "source": "User-executed run; reviewed saved metrics, losses, adapter headers and data artifacts",
+  "model": "Qwen/Qwen3-0.6B-Base",
+  "seeds": 1,
+  "optimizer_updates": 20,
+  "test_sequences": 8,
+  "test_prediction_tokens": 2048,
+  "test_ppl_change_pct": -5.25408905448117,
+  "storage_bytes_equal": true,
+  "storage_bytes": 375742464,
+  "training_peak_change_pct": -3.9778870947336897,
+  "adapter_params": {
+    "uniform4_r16": 10092544,
+    "shiftq": 2621440
+  },
+  "shiftq_allocations": {
+    "4bit_rank4": 103,
+    "4bit_rank8": 8,
+    "6bit_rank4": 85
+  },
+  "saved_adapter_headers_match_allocations": true,
+  "unique_source_rows": true,
+  "unique_token_blocks": true,
+  "caution": "One seed and eight evaluation sequences; no claim of general improvement or independent adaptive-rank benefit.",
+  "domain_shift": "AG News PPL: 39.90 ShiftQ, 46.72 uniform4_r16, 27.40 unquantized. Both fine-tuned methods are worse than the unquantized reference.",
+  "next": "Run all controls on 0.6B with two seeds and larger held-out sets; retain 20 updates. Then run the 1.7B main study.",
+  "next_config": {
+    "FAST_MODE": false,
+    "MODEL_ID": "SMOKE_MODEL",
+    "ALLOW_FULL_RUN": true,
+    "TRAIN_STEPS": 20
+  },
+  "saved_notebook_outputs": "Notebook file has no execution outputs; save the live notebook in VS Code before restarting."
+}
