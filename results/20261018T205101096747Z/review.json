@@ -1,0 +1,58 @@
+{
+  "run_id": "20261018T205101096747Z",
+  "source": "Reviewed user-executed artifacts; no independent training rerun",
+  "stage": "0.6B two-seed pilot; 20 optimizer updates",
+  "preliminary": true,
+  "completed_configurations": 25,
+  "completed_training_runs": 20,
+  "completed_seeds": [
+    42,
+    43
+  ],
+  "held_out_sequences_per_domain": 64,
+  "mean_test_ppl": {
+    "uniform4_r16": 21.275030580033494,
+    "shiftq": 21.01564729596475,
+    "random": 20.91960811786914,
+    "fixed": 20.931575224637477,
+    "adaptive_rank": 21.495453720435584
+  },
+  "shiftq_vs_uniform_pct": -1.219191122160701,
+  "paired_changes_pct": {
+    "uniform4_r16": {
+      "42": -0.931094377066155,
+      "43": -1.5081397904581295
+    },
+    "random": {
+      "42": 0.748805837967792,
+      "43": 0.16849231425342115
+    },
+    "fixed": {
+      "42": 0.5021527827377081,
+      "43": 0.30046675336143913
+    }
+  },
+  "shared_storage_bytes": 375742464,
+  "findings": [
+    "ShiftQ has lower test perplexity than uniform4_r16 in both seeds.",
+    "Random and fixed pair placement have lower test perplexity than ShiftQ in both seeds; differences are small and not a significance claim.",
+    "Adaptive-bits policy is identical to uniform4_r16: zero changed pairs. This is a degenerate ablation, not an independent mixed-bit comparison.",
+    "Calibration domain changes only 2 of 196 projection allocations.",
+    "AG News mean PPL remains worse than the unquantized reference across all fine-tuned configurations."
+  ],
+  "audits": {
+    "all_20_update_logs_complete": true,
+    "all_adapter_shapes_and_counts_match": true,
+    "source_row_hashes_unique": true,
+    "token_blocks_unique": true
+  },
+  "conclusion": "The pilot supports reallocating storage between base precision and adapters, but does not establish that sensitivity-aware placement improves over matched random/fixed placement.",
+  "limitation": "Only two seeds and 16384 prediction tokens per held-out domain; 0.6B with short training remains preliminary despite FAST_MODE=False.",
+  "next": "Keep the heuristic fixed; run the prespecified 1.7B, 150-update, two-seed study. Do not tune the allocator on these test results.",
+  "next_config": {
+    "MODEL_ID": "MAIN_MODEL",
+    "TRAIN_STEPS": 150,
+    "FAST_MODE": false,
+    "ALLOW_FULL_RUN": true
+  }
+}
