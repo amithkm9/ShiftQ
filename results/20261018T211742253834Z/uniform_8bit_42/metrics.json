@@ -1,0 +1,20 @@
+{
+  "training_peak_gb": null,
+  "training_time_s": null,
+  "trainable_params": 0,
+  "method": "uniform_8bit",
+  "seed": 42,
+  "model": "Qwen/Qwen3-1.7B-Base",
+  "validation_nll": 3.050930006429553,
+  "validation_ppl": 21.134990962904187,
+  "test_nll": 2.8994492180645466,
+  "test_ppl": 18.164138134636328,
+  "ag_test_nll": 3.0852339919656515,
+  "ag_test_ppl": 21.872584252318546,
+  "model_mb": 1828.227072,
+  "loaded_mlx_gb": 1.828243472,
+  "latency_ms": 138.87233298737556,
+  "inference_peak_gb": 2.51617608,
+  "effective_bpw": 8.500540098521112,
+  "quantized_weight_bpw": 8.0
+}
