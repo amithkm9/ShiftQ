@@ -1,0 +1,205 @@
+{
+  "run_id": "20261018T211742253834Z",
+  "reviewed_on": "2026-10-20",
+  "source": "Reviewed user-executed artifacts; no independent training rerun",
+  "stage": "1.7B main study; 150 optimizer updates; seeds 42 and 43",
+  "completed_configurations": 25,
+  "completed_training_runs": 20,
+  "limited_evidence": "Two training seeds, one data split, 16384 prediction tokens per evaluation domain",
+  "mean_test_ppl": {
+    "adaptive_bits": 14.655982870180065,
+    "adaptive_rank": 14.65249338951006,
+    "fixed": 14.275053627827823,
+    "random": 14.287141981438966,
+    "shiftq": 14.286807095358226,
+    "shiftq_ag": 14.308858837034654,
+    "shiftq_wiki": 14.330804398727999,
+    "uniform4_r16": 14.655982870180065,
+    "uniform4_r4": 14.277588595894436,
+    "uniform4_r8": 14.455561249762994,
+    "uniform_3bit": 58.441479211434405,
+    "uniform_4bit": 22.89280100690637,
+    "uniform_6bit": 18.853550527554443,
+    "uniform_8bit": 18.164138134636328,
+    "unquantized": 17.94874138683075
+  },
+  "shiftq_vs_uniform4_r16_pct": -2.5189424557324314,
+  "rank4_storage_vs_shiftq_pct": -5.03961871305788,
+  "shiftq_minus_random_test_ppl": -0.00033488608073994897,
+  "matched_control_storage_bytes": 1037731840,
+  "findings": [
+    "ShiftQ improves mean test perplexity against uniform4_r16 at equal stored tensor bytes.",
+    "Random placement is nearly identical; fixed placement has slightly lower mean PPL. No sensitivity advantage or statistical significance is established.",
+    "Uniform4_r4 has slightly lower mean test PPL with 5.04% less tensor storage than ShiftQ.",
+    "Adaptive-bits policy equals uniform4_r16 exactly; this is a degenerate bit-only ablation.",
+    "WikiText versus AG News calibration changes 6 of 196 allocations.",
+    "All fine-tuned configurations have worse AG News PPL than the unquantized reference.",
+    "Validation minima occur before the final update. Best-checkpoint test performance is unavailable because only final adapters were saved."
+  ],
+  "memory_measurement_issue": {
+    "observation": "Later ablations have about 1.0203 GB more active MLX memory than earlier methods with equivalent stored tensor bytes.",
+    "example_loaded_mlx_gb": {
+      "shiftq": 1.040042,
+      "fixed": 2.060358688
+    },
+    "cause": "Unresolved; possibly retained allocations. This is a hypothesis, not an established diagnosis.",
+    "interpretation": "Raw process memory remains saved. Do not claim cross-phase memory advantages or subtract the offset as a measured correction.",
+    "next": "Measure each representative configuration from a fresh kernel or process with identical setup and synchronized warm-up."
+  },
+  "audits": {
+    "all_150_update_logs_complete": true,
+    "all_20_adapter_shapes_and_counts_match": true,
+    "source_row_hashes_unique": true,
+    "token_blocks_unique": true,
+    "notebook_valid": true,
+    "code_cells": 86,
+    "max_nonempty_code_lines": 9,
+    "saved_error_outputs": 0,
+    "notebook_outputs_preserved": true
+  },
+  "validation_minima": [
+    {
+      "method": "uniform4_r16",
+      "seed": 42,
+      "best_validation_step": 130,
+      "best_validation_nll": 2.795176623389125,
+      "final_validation_nll": 2.8498869463801384
+    },
+    {
+      "method": "shiftq",
+      "seed": 42,
+      "best_validation_step": 125,
+      "best_validation_nll": 2.783867932856083,
+      "final_validation_nll": 2.826329354196787
+    },
+    {
+      "method": "adaptive_bits",
+      "seed": 42,
+      "best_validation_step": 130,
+      "best_validation_nll": 2.795176623389125,
+      "final_validation_nll": 2.8498869463801384
+    },
+    {
+      "method": "adaptive_rank",
+      "seed": 42,
+      "best_validation_step": 130,
+      "best_validation_nll": 2.797948647290468,
+      "final_validation_nll": 2.8445472344756126
+    },
+    {
+      "method": "random",
+      "seed": 42,
+      "best_validation_step": 125,
+      "best_validation_nll": 2.7851634714752436,
+      "final_validation_nll": 2.8248993642628193
+    },
+    {
+      "method": "uniform4_r16",
+      "seed": 43,
+      "best_validation_step": 130,
+      "best_validation_nll": 2.7934932578355074,
+      "final_validation_nll": 2.8458765614777803
+    },
+    {
+      "method": "shiftq",
+      "seed": 43,
+      "best_validation_step": 130,
+      "best_validation_nll": 2.7828632425516844,
+      "final_validation_nll": 2.8224661983549595
+    },
+    {
+      "method": "adaptive_bits",
+      "seed": 43,
+      "best_validation_step": 130,
+      "best_validation_nll": 2.7934932578355074,
+      "final_validation_nll": 2.8458765614777803
+    },
+    {
+      "method": "adaptive_rank",
+      "seed": 43,
+      "best_validation_step": 130,
+      "best_validation_nll": 2.7984395027160645,
+      "final_validation_nll": 2.8439702354371548
+    },
+    {
+      "method": "random",
+      "seed": 43,
+      "best_validation_step": 130,
+      "best_validation_nll": 2.78278099745512,
+      "final_validation_nll": 2.823698725551367
+    },
+    {
+      "method": "uniform4_r4",
+      "seed": 42,
+      "best_validation_step": 125,
+      "best_validation_nll": 2.7940550092607737,
+      "final_validation_nll": 2.8185712043195963
+    },
+    {
+      "method": "uniform4_r8",
+      "seed": 42,
+      "best_validation_step": 130,
+      "best_validation_nll": 2.7902259118855,
+      "final_validation_nll": 2.830116331577301
+    },
+    {
+      "method": "fixed",
+      "seed": 42,
+      "best_validation_step": 125,
+      "best_validation_nll": 2.782380050048232,
+      "final_validation_nll": 2.8234438318759203
+    },
+    {
+      "method": "uniform4_r4",
+      "seed": 43,
+      "best_validation_step": 130,
+      "best_validation_nll": 2.792246703058481,
+      "final_validation_nll": 2.8164386842399836
+    },
+    {
+      "method": "uniform4_r8",
+      "seed": 43,
+      "best_validation_step": 130,
+      "best_validation_nll": 2.790492005646229,
+      "final_validation_nll": 2.829394545406103
+    },
+    {
+      "method": "fixed",
+      "seed": 43,
+      "best_validation_step": 130,
+      "best_validation_nll": 2.7817452251911163,
+      "final_validation_nll": 2.8202509060502052
+    },
+    {
+      "method": "shiftq_wiki",
+      "seed": 42,
+      "best_validation_step": 130,
+      "best_validation_nll": 2.785782236605882,
+      "final_validation_nll": 2.8245961777865887
+    },
+    {
+      "method": "shiftq_ag",
+      "seed": 42,
+      "best_validation_step": 130,
+      "best_validation_nll": 2.7850953303277493,
+      "final_validation_nll": 2.82393579930067
+    },
+    {
+      "method": "shiftq_wiki",
+      "seed": 43,
+      "best_validation_step": 125,
+      "best_validation_nll": 2.7856665812432766,
+      "final_validation_nll": 2.823329482227564
+    },
+    {
+      "method": "shiftq_ag",
+      "seed": 43,
+      "best_validation_step": 130,
+      "best_validation_nll": 2.785000594332814,
+      "final_validation_nll": 2.8224902227520943
+    }
+  ],
+  "raw_metrics_sha256": "dc8b88da394a9144fecf06c708beb2142fd525e8804240cd6a135d17a49d3b32",
+  "conclusion": "The study does not establish an advantage from sensitivity-aware placement. A smaller uniform-rank baseline remains competitive.",
+  "next": "Finalize the report with these results, verify runtime memory separately, then predefine a validation-selected checkpoint study with more seeds and fresh held-out data. Do not tune on the current test results."
+}

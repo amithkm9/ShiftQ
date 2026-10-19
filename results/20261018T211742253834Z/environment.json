@@ -1,0 +1,40 @@
+{
+  "MODEL_ID": "Qwen/Qwen3-1.7B-Base",
+  "FAST_MODE": false,
+  "SEED": 42,
+  "SEEDS": [
+    42,
+    43
+  ],
+  "MAX_LENGTH": 256,
+  "BATCH_SIZE": 1,
+  "GROUP_SIZE": 64,
+  "LORA_SCALE": 2.0,
+  "LEARNING_RATE": 0.0001,
+  "GRAD_ACCUM": 4,
+  "TRAIN_STEPS": 150,
+  "CHECKPOINT": true,
+  "RUN_SHIFT": true,
+  "RUN_ABLATIONS": true,
+  "COUNTS": {
+    "calibration": 32,
+    "train": 512,
+    "validation": 64,
+    "test": 64,
+    "ag_calibration": 32,
+    "ag_test": 64
+  },
+  "versions": {
+    "mlx": "0.32.4",
+    "mlx-lm": "0.32.2",
+    "datasets": "5.1.0",
+    "transformers": "5.20.1",
+    "numpy": "2.5.4",
+    "pandas": "3.0.6",
+    "matplotlib": "3.11.2"
+  },
+  "python": "3.12.12",
+  "machine": "macOS-26.6.2-arm64-arm-64bit",
+  "adapter_dtype": "float32",
+  "model_revision": "ea980cb0a6c2ae4b936e82123acc929f1cec04c1"
+}
