@@ -1,0 +1,4 @@
+{
+  "text": "ShiftQ test PPL: -5.25%; tensor size: +0.00% versus 4-bit/rank-16, across 1 seed(s). This does not establish general improvement.",
+  "preliminary": true
+}
